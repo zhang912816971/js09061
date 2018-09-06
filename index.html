@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        .box{
+            width: 1200px;
+            height: 900px;
+            margin: 0 auto;
+            border:1px solid #123456;
+
+        }
+        a{
+            width: 100px;
+            font-size: 20px;
+            height: 40px;
+            color: #000;
+            line-height: 16px;
+            text-align: center;
+            border: 1px solid #286dda;
+            margin-left: 1100px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table table-striped table-hover table-condensed" >
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td><button>删除</button></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <a href="javascript:;">添加一行</a>
+    <!--    <span class="span" style="width: 200px;height: 100px;background: yellow;">点击</span>
+    <div class="box">
+        This is a box
+        这是一个注释
+    </div> -->
+</body>
+</html>
+<script>
+
+
+//table 弹出文本框 //删除第一行tr
+    let tds = document.querySelectorAll("td");
+    let add = document.querySelector("a");
+    let table = document.querySelector("tbody");
+   
+    function a(){
+        let btn = document.querySelector("button");
+        btn.onclick = function(){
+            btn1 = document.querySelector("button");
+            let t = btn1.parentNode.parentNode;
+            if(t.nextElementSibling != null){
+                let tnext = t.nextElementSibling;//下一个表
+                let tdnext = tnext.querySelectorAll("td");//下一表的td
+                tdnext[8].innerText = "";
+                let bt = document.createElement("button");
+                bt.innerText="删除";
+                tdnext[8].appendChild(bt);
+                t.remove();
+                bt.onmouseenter = function(){
+                    a();
+                }
+            }else{
+                 t.remove();
+            }
+        }
+    }
+    a();
+    tds.forEach((item,index)=>{
+        item.ondblclick = function(){
+            let inp = document.createElement("input");
+            inp.value = item.innerText;
+            item.innerText = "";
+
+            inp.onblur = function(){
+                item.innerText = this.value;
+            }
+            item.appendChild(inp);
+            inp.onfocus();
+    }
+    });
+    add.onclick = function(){
+      
+        let newTr = document.createElement("tr");
+
+        let num = 1;
+        for(let i = 0; i<9;i++){
+            let newTd = document.createElement("td");
+            newTd.innerText = num;
+            num++;
+            newTr.appendChild(newTd);
+        }
+        table.appendChild(newTr);
+      
+
+       
+        
+  }  
+
+
+//白天 练习
+    // let span = document.querySelector(".span");
+    // let box = document.querySelector(".box");
+
+    // let num = 0;
+//1
+    // let t = setInterval(move,200);
+
+    // function move(){
+    //  let w,r,g,b;
+    //  w = parseInt(Math.random()*80+80);
+    //  r = parseInt(Math.random()*255);
+    //  g = parseInt(Math.random()*255);
+    //  b = parseInt(Math.random()*255);
+    //  let div = document.createElement("div");
+    //  div.style = `width:${w}px;height:${w}px;background:rgb(${r},${g},${b});border-radius:50%;float:left;`;
+    //  // box.innerHtml=`<div style = "width:${w}px;height:${w}px;background:rgb(${r},${g},${b});border-radius:50%;float:left;">`,1,`</div>`;
+    //  box.appendChild(div);
+    // }
+
+
+
+//2
+    // let t = setInterval(move,100);
+    // let str = "舜发于畎亩之中，傅说举于版筑之中，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后喻。入则无法家拂士，出则无敌国外患者，国恒亡。然后知生于忧患，而死于安乐也。";
+    // function move(){
+    //  if(num >=str.length){
+    //      creatInterVal(t);
+    //  }
+    //  let char = str.charAt(num);
+
+        
+    //  // let text = document.creatTextNode(char);
+    //  box.append(char);
+    //  num++;
+    // }
+
+//3
+    // span.onclick = function(){
+    //  let text = document.createTextNode(`这是一个text${num}`);
+    //  let comment = document.createComment("这是一个comment");
+    //  let a = document.createElement("a");
+    //  let attr = document.createAttribute("href");
+    //  attr.nodeValue="https://www.baidu.com"; 
+    //  a.setAttributeNode(attr);
+    //  box.append(a);
+    //  num++;
+    // }
+    // let box = document.querySelector(".box");
+    // console.dir(box.childNodes);
+    // console.dir(box.firstChild);
+    // console.dir(box.lastChild);
+    // console.dir(box.firstElementChild);
+    // console.dir(box.lastElementChild);
+    // console.dir(box.nextSibling);
+    // console.dir(box.previousSibling);
+    // console.dir(box.nextElementSibling);
+    // console.dir(box.previousElementSibling);
+    // console.dir(box.attributes);
+    // console.dir(box.parentNode);
+
+</script>
